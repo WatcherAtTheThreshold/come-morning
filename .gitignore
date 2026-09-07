@@ -1,0 +1,18 @@
+# Godot 4
+.godot/
+/android/
+
+# Godot export output
+/build/
+*.pck
+*.exe
+*.zip
+
+# Blender
+*.blend1
+*.blend2
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
