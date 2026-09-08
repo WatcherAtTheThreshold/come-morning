@@ -66,7 +66,7 @@ gains, and what that **unlocks in the world** — never a stat.
 
 | Tier | Structure | Height | Unlocks |
 |---|---|---|---|
-| 0 | Crate and a tarp | ~1.3 m | Open midday only, closed in rain |
+| 0 | Crate and a tarp | ~1.1 m | Open midday only, closed in rain |
 | 1 | Timber frame, roof, lantern | ~2.0 m | Open in rain; open into the evening |
 | 2 | Proper shopfront, sign, flowerbox | ~2.6 m | Kithrin is present all day; new goods appear |
 
@@ -76,7 +76,13 @@ as growth in place rather than a replacement. But they are deliberately differen
 heights, because against a 1.4 m Kithrin the ladder becomes something you can read
 from across the square before a single detail resolves:
 
-> Tier 0 you look **down** at. Tier 1 **meets your eye**. Tier 2 stands **over** you.
+> Tier 0 sits **below your eye line**. Tier 1 is a structure you stand **under**.
+> Tier 2 has a **storey on you**.
+
+A 1.4 m Kithrin has an eye line around 1.25 m, so tier 0 has to come in *under* that
+to read as something you stoop toward — a crate at counter height with a tarp slung
+just above it. These are first guesses. They live as `const` at the top of the tier
+script so the grey-box pass can tune them in one number each.
 
 Signs and flowerboxes are what you notice once you've walked over. Silhouette is what
 you notice from the other side of town, and it is doing most of the emotional work.
@@ -119,7 +125,9 @@ accident:
 
 - Does the town max out, or does scarcity mean some Kithrin never reach tier 2?
   (Leaning toward scarcity — a town that always ends the same way ends the same for
-  everyone.)
+  everyone.) **Decided 2026-09-08: it must not max out.** If every stall can reach
+  tier 2, every mature town converges on the same arrangement, and modelling three
+  tiers for each Kithrin buys nothing.
 - Where do resources come from? Gathering areas exist in the concept but have no
   design yet.
 - Is the player a Kithrin, or something else? The prose in this project's `ash-*`
@@ -127,3 +135,34 @@ accident:
   if it's wanted later.
 - What does the player's own house do, if anything? It may not need to be a
   customization system at all if the *town* is the thing that changes.
+
+### What comes back over the counter
+
+Considered 2026-09-08 and **deliberately not built in milestone 0** — the player
+gives mushrooms and receives nothing. Any layer between the gift and the change
+contaminates the one thing this milestone is measuring.
+
+Two answers were rejected outright, and the reasoning should survive:
+
+**No currency, ever.** Money does not add scarcity — barter already has that. It
+adds *fungibility*, and fungibility collapses every Kithrin's desire into one
+number. The choice degrades from *who do I care about* into *who goes first*. A
+town built out of turn order is the same town every time, which is the exact
+opposite of the pitch.
+
+**No tickets or cards.** Better than currency, because the Kithrin still does the
+work overnight. Still an abstraction layer, still a schema, still refused.
+
+**The likely answer, for milestone 2 or later: the Kithrin *are* the conversion.**
+You gather raw; they convert; a Kithrin's tier decides what they can convert. Tilly
+at tier 2 turns mushrooms into dried bundles, which happen to be what the weaver
+wants. That produces supply chains and real differentiation with no cards, no
+currency, and no new schema — it is the existing tier ladder doing a second job,
+and it lands exactly on *upgrades unlock access, not numbers*.
+
+The town then becomes a dependency graph expressed entirely through who you chose
+to help. Reaching the weaver requires dye; dye requires Tilly at tier 2; so
+upgrading Tilly *is* the path to the weaver.
+
+See `alternates/town-outline.md` for the card-economy design this was weighed
+against, and why it is a separate game.

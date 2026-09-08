@@ -27,9 +27,12 @@ is plainly not the player.
 - [x] **Which Kithrin — Tilly.** Small rounded fox-kin. Soft continuous forms, no
       plating and no visible joints; big head, short stubby limbs, tail. The fur
       reads through *silhouette*, never through texture.
-- [ ] What they trade in — what the player *gets*, not just gives. **Still open.**
-      The player gives mushrooms; what comes back over the counter is undecided,
-      and tier 2's "new goods appear" has no content behind it yet.
+- [x] **What they trade in — mushrooms in, nothing back.** Settled 2026-09-08:
+      milestone 0 has no currency, no tickets and no return good, because any
+      layer between the gift and the change contaminates what this milestone
+      measures. The likely long-term answer — the Kithrin themselves are the
+      conversion layer — is written up under "What comes back over the counter"
+      in `milestone-0.md`, for milestone 2 or later.
 - [x] **Kithrin height — 1.4 m.** Recorded in `CLAUDE.md` under Scale.
 - [x] **Stall footprint — 2 × 2 m** on a 1 m grid, shared by all three tiers.
       Heights are *not* shared; see the tier ladder in `milestone-0.md`.
