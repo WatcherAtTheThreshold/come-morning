@@ -24,10 +24,15 @@ is plainly not the player.
 
 **Decide and write down:**
 
-- [ ] Which Kithrin. Species, silhouette in one sentence.
-- [ ] What they trade in — what the player *gets*, not just gives.
-- [ ] Canonical Kithrin height in metres. Goes in `CLAUDE.md` under Scale.
-- [ ] Stall footprint in metres. All three tiers share it.
+- [x] **Which Kithrin — Tilly.** Small rounded fox-kin. Soft continuous forms, no
+      plating and no visible joints; big head, short stubby limbs, tail. The fur
+      reads through *silhouette*, never through texture.
+- [ ] What they trade in — what the player *gets*, not just gives. **Still open.**
+      The player gives mushrooms; what comes back over the counter is undecided,
+      and tier 2's "new goods appear" has no content behind it yet.
+- [x] **Kithrin height — 1.4 m.** Recorded in `CLAUDE.md` under Scale.
+- [x] **Stall footprint — 2 × 2 m** on a 1 m grid, shared by all three tiers.
+      Heights are *not* shared; see the tier ladder in `milestone-0.md`.
 
 ---
 

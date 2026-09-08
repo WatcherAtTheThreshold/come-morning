@@ -16,3 +16,9 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Blender working files live outside the repo (D:\Blender), not here.
+# This is a safety net for a stray save-in-place.
+*.blend
+*.blend[0-9]
+blender-wip/

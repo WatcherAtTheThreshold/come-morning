@@ -64,14 +64,26 @@ resource is a choice.
 Written in words before it's modelled. Each tier states what it lacks, what it
 gains, and what that **unlocks in the world** — never a stat.
 
-| Tier | Structure | Unlocks |
-|---|---|---|
-| 0 | Crate and a tarp | Open midday only, closed in rain |
-| 1 | Timber frame, roof, lantern | Open in rain; open into the evening |
-| 2 | Proper shopfront, sign, flowerbox | Kithrin is present all day; new goods appear |
+| Tier | Structure | Height | Unlocks |
+|---|---|---|---|
+| 0 | Crate and a tarp | ~1.3 m | Open midday only, closed in rain |
+| 1 | Timber frame, roof, lantern | ~2.0 m | Open in rain; open into the evening |
+| 2 | Proper shopfront, sign, flowerbox | ~2.6 m | Kithrin is present all day; new goods appear |
 
-**TBD before modelling:** which Kithrin this is and what they trade in. Everything
-above is structure; the specific character determines the silhouette and the props.
+**The footprint is shared; the height is not.** All three tiers occupy the same
+2 × 2 m plot on a 1 m grid, with the same anchor — that is what makes the swap read
+as growth in place rather than a replacement. But they are deliberately different
+heights, because against a 1.4 m Kithrin the ladder becomes something you can read
+from across the square before a single detail resolves:
+
+> Tier 0 you look **down** at. Tier 1 **meets your eye**. Tier 2 stands **over** you.
+
+Signs and flowerboxes are what you notice once you've walked over. Silhouette is what
+you notice from the other side of town, and it is doing most of the emotional work.
+
+**Decided since this document was written:** the stall belongs to **Tilly**, a small
+rounded fox-kin, and she trades in mushrooms. What comes back over the counter — and
+what tier 2's "new goods appear" actually means — is still open.
 
 ---
 
