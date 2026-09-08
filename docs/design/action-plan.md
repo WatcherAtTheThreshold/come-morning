@@ -106,6 +106,27 @@ is whether it feels good — that is the checkpoint below.
 is the cheapest possible version of the game's signature moment. If it lands with
 boxes, the idea is real.
 
+### PASSED 2026-09-08
+
+Jessop: *"far better than the switch alone. It looks good and it feels right...
+you never feel like you are waiting."*
+
+Two findings worth keeping:
+
+**The travelling shadow is doing the work, not the fade alone.** He deliberately
+tried to look away during the transition and still registered it — a shadow
+sweeping across the ground reads peripherally in a way a screen dimming does not.
+This makes the sun *rotation* between `SUN_ANGLE_MORNING` and `SUN_ANGLE_EVENING`
+load-bearing rather than decorative. A future simplification to "just fade the
+colour" would look nearly identical in a screenshot and lose most of the effect
+in motion. Noted in `overnight.gd` where the temptation would arise.
+
+**The pacing is right on the first guess.** `DUSK_TIME 1.6 / NIGHT_TIME 0.9 /
+DAWN_TIME 2.0` produced no sense of waiting. Treat these as confirmed rather than
+provisional; change them only for a reason, not to fiddle.
+
+The idea is real. Step 3's Blender day is now worth spending.
+
 ---
 
 ## Step 3 — Model the real tiers in Blender

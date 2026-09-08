@@ -23,6 +23,16 @@ const DUSK_TIME := 1.6      ## day draining to dark. The light warms as it goes.
 const NIGHT_TIME := 0.9     ## how long the dark is held. The work happens here.
 const DAWN_TIME := 2.0      ## slower than dusk — the payoff is allowed to linger.
 
+## DO NOT SIMPLIFY THIS TO A COLOUR FADE.
+##
+## The sun *rotates* between these two angles, which sweeps every shadow in the
+## scene across the ground. At the 2026-09-08 checkpoint that movement turned
+## out to be doing the work: Jessop deliberately looked away during the
+## transition and still registered it, because a travelling shadow reads
+## peripherally in a way a screen dimming does not.
+##
+## Dropping the rotation and keeping only colour and energy would look nearly
+## identical in a screenshot and lose most of the effect in motion.
 const SUN_ANGLE_MORNING := Vector3(-42.0, 128.0, 0.0)
 const SUN_ANGLE_EVENING := Vector3(-8.0, 196.0, 0.0)   ## low and swung west
 const SUN_ENERGY_MORNING := 1.15
