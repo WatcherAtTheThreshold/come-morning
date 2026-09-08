@@ -77,12 +77,30 @@ progression register.
 An instant mesh swap reads as a bug. Fade out, brief evening, fade in on the next
 morning with the new tier already in place.
 
-- [ ] One `ColorRect` over the viewport, one `AnimationPlayer`
-- [ ] Tier changes at the darkest point, never on screen
-- [ ] The evening beat is lit differently, not just darker — `Palette.SUN_EVENING`
-      and `SKY_EVENING` exist for this
-- [ ] Timing values as `const` at the top of the script so the pacing is a
-      one-number change
+- [x] One `ColorRect` over the viewport — **driven by a `Tween`, not an
+      `AnimationPlayer`.** Deviation from `milestone-0.md`, made because the
+      lighting has to be interpolated *between Palette constants*, and an
+      `AnimationPlayer` would bake those colours into the `.tscn` as keyframes.
+      That breaks the rule that the world re-grades from one file, and it splits
+      the sequence across two places. One `Tween` in `overnight.gd` keeps every
+      colour in `Palette` and every timing as a `const`.
+- [x] Tier changes at the darkest point, never on screen
+- [x] The evening beat is lit differently, not just darker — the sun warms,
+      drops toward the horizon and swings west while the overlay closes, so it
+      reads as a sunset rather than a fade-out
+- [x] Timing values as `const` at the top of the script so the pacing is a
+      one-number change — `DUSK_TIME`, `NIGHT_TIME`, `DAWN_TIME`
+
+Dawn is deliberately slower than dusk. The morning is the payoff and is allowed
+to linger; the evening only has to get out of the way.
+
+The overlay fades through `Palette.NIGHT`, a deep indigo, rather than black.
+Black is an interruption; a night sky is a pause.
+
+**Verified headless 2026-09-08:** overlay reaches alpha 1.0, sun energy drops
+1.15 → 0.55, the tier swaps while dark with only the new tier visible, and both
+alpha and sun energy return to morning values. What that does *not* tell anyone
+is whether it feels good — that is the checkpoint below.
 
 **Checkpoint: does the fade do the emotional work the doc claims it does?** This
 is the cheapest possible version of the game's signature moment. If it lands with

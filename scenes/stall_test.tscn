@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/stall_test.gd" id="1_root"]
 [ext_resource type="Script" path="res://scripts/stall.gd" id="2_stall"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_player"]
 [ext_resource type="Script" path="res://scripts/tier_debug.gd" id="4_debug"]
+[ext_resource type="Script" path="res://scripts/overnight.gd" id="5_overnight"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_1"]
 
@@ -68,11 +69,26 @@ fov = 60.0
 [node name="TierLabel" type="Label" parent="Debug"]
 offset_left = 16.0
 offset_top = 12.0
-offset_right = 420.0
+offset_right = 520.0
 offset_bottom = 38.0
 text = "tier 0"
+
+[node name="Overnight" type="CanvasLayer" parent="."]
+layer = 10
+script = ExtResource("5_overnight")
+sun_path = NodePath("../Sun")
+world_environment_path = NodePath("../Environment")
+
+[node name="Overlay" type="ColorRect" parent="Overnight"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.078, 0.102, 0.18, 0)
 
 [node name="TierDebug" type="Node" parent="."]
 script = ExtResource("4_debug")
 stall_path = NodePath("../Stall")
 label_path = NodePath("../Debug/TierLabel")
+overnight_path = NodePath("../Overnight")

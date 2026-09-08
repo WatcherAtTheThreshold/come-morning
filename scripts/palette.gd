@@ -51,6 +51,11 @@ const FOG_EVENING  := Color("6f6a7a")
 const LANTERN      := Color("ffc466")   ## tier 1's promise: open after dark
 const ACCENT       := Color("e0a63c")   ## signage, markers, the tier 2 sign
 
+## What the screen fades through on the way to morning. A deep indigo rather
+## than black — black is an interruption, a night sky is a pause. The player
+## should feel time passing, not feel the game stop.
+const NIGHT        := Color("141a2e")
+
 ## The dark behind readable text. A near-black with the world's warmth in it
 ## rather than pure black, so text sits in the scene instead of on top of it.
 const INK          := Color(0.09, 0.07, 0.06)
