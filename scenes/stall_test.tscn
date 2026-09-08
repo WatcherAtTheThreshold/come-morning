@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/stall_test.gd" id="1_root"]
+[ext_resource type="Script" path="res://scripts/stall.gd" id="2_stall"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_player"]
+[ext_resource type="Script" path="res://scripts/tier_debug.gd" id="4_debug"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_1"]
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("SkyMat_1")
+
+[sub_resource type="Environment" id="Env_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+fog_enabled = true
+fog_density = 0.004
+
+[sub_resource type="CapsuleShape3D" id="Cap_1"]
+radius = 0.3
+height = 1.4
+
+[sub_resource type="CapsuleMesh" id="CapMesh_1"]
+radius = 0.3
+height = 1.4
+
+[node name="StallTest" type="Node3D"]
+script = ExtResource("1_root")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+shadow_enabled = true
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(48, 1, 48)
+
+[node name="Stall" type="Node3D" parent="."]
+script = ExtResource("2_stall")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -5)
+script = ExtResource("3_player")
+
+[node name="Shape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("Cap_1")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+mesh = SubResource("CapMesh_1")
+
+[node name="CamPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Camera" type="Camera3D" parent="Player/CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+fov = 60.0
+
+[node name="Debug" type="CanvasLayer" parent="."]
+
+[node name="TierLabel" type="Label" parent="Debug"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 420.0
+offset_bottom = 38.0
+text = "tier 0"
+
+[node name="TierDebug" type="Node" parent="."]
+script = ExtResource("4_debug")
+stall_path = NodePath("../Stall")
+label_path = NodePath("../Debug/TierLabel")

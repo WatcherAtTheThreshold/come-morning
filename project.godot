@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Come Morning"
 config/description="A cozy town game. Trade goods to the Kithrin and the town upgrades overnight."
+run/main_scene="res://scenes/stall_test.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
