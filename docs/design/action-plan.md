@@ -55,14 +55,20 @@ in good models either — and you'd know in an evening rather than after a day o
 modelling. If it does read, you go to Blender already knowing the footprint, the
 camera distance, and the transition timing.
 
-- [ ] `scenes/stall_test.tscn` — ground plane, one directional light, three CSG
+- [x] `scenes/stall_test.tscn` — ground plane, one directional light, three CSG
       tier variants, nothing else
-- [ ] `scripts/stall.gd` — holds a `tier: int`, shows one variant
-- [ ] Debug keys 1/2/3 to swap tier, handled in `_unhandled_input` inside a
+- [x] `scripts/stall.gd` — holds a `tier: int`, shows one variant
+- [x] Debug keys 1/2/3 to swap tier, handled in `_unhandled_input` inside a
       script that gets deleted, **not** added to the input map in `project.godot`.
       They must not outlive the milestone.
 
-**Checkpoint: look at it.**
+**Checkpoint: look at it. — PASSED 2026-09-08.** The three silhouettes differ in
+kind and not merely in size, and the ladder reads against a 1.4 m capsule: head
+above the tarp, well under the tier 1 roof, dwarfed by tier 2. Heights unchanged.
+
+Giving each tier its defining feature rather than three plain boxes is what made
+the checkpoint answerable — Jessop's read was that the dressing is what let the
+progression register.
 
 ---
 
@@ -85,6 +91,27 @@ boxes, the idea is real.
 ---
 
 ## Step 3 — Model the real tiers in Blender
+
+### Carried over from the grey-box checkpoint
+
+Observed 2026-09-08 looking at the CSG version. None of these were fixed in CSG,
+because the boxes get deleted here.
+
+**The counter must not recede as the stall improves.** In the grey box the
+handover surface is fully exposed at tier 0 and ends up recessed inside a dark
+enclosure behind a large sign at tier 2. That runs directly against what tier 2
+means — *the Kithrin is present all day*. The upgrade must never hide the person
+the player did all the gathering for. Fix with a wider or taller front opening, a
+lighter interior, or a counter that sits proud of the facade. This is a design
+constraint on the model, not a preference.
+
+- [ ] Tarp reads as a tabletop — it needs to sag and lean, sit narrower than the
+      crate span, and pull forward to actually shelter the counter
+- [ ] Lantern floats. It needs a bracket to the post or the roof
+- [ ] Tier 2 sign is a billboard across the frontage. Hang it above the opening,
+      smaller, rather than bolting it across
+- [ ] Pull the grade back toward earthy — tier 1's thatch is the most saturated
+      thing on screen, and tier 2's walls go cold against the terracotta roof
 
 Only now. Build **tier 2 first** — the finished stall with the sign, the
 flowerbox, the good roof — then subtract to get tier 1, then tier 0.
