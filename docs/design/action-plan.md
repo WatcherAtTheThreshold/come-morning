@@ -144,12 +144,12 @@ the player did all the gathering for. Fix with a wider or taller front opening, 
 lighter interior, or a counter that sits proud of the facade. This is a design
 constraint on the model, not a preference.
 
-- [ ] Tarp reads as a tabletop — it needs to sag and lean, sit narrower than the
+- [x] Tarp reads as a tabletop — it needs to sag and lean, sit narrower than the
       crate span, and pull forward to actually shelter the counter
-- [ ] Lantern floats. It needs a bracket to the post or the roof
-- [ ] Tier 2 sign is a billboard across the frontage. Hang it above the opening,
+- [x] Lantern floats. It needs a bracket to the post or the roof
+- [x] Tier 2 sign is a billboard across the frontage. Hang it above the opening,
       smaller, rather than bolting it across
-- [ ] Pull the grade back toward earthy — tier 1's thatch is the most saturated
+- [x] Pull the grade back toward earthy — tier 1's thatch is the most saturated
       thing on screen, and tier 2's walls go cold against the terracotta roof
 
 Only now. Build **tier 2 first** — the finished stall with the sign, the
@@ -159,12 +159,12 @@ Building forward from a crate produces three objects that don't share a
 silhouette, and the upgrade reads as a replacement rather than growth.
 
 - [ ] Shared footprint and anchor point across all three
-- [ ] `-col` on anything with a gap or an open front, never `-convcol`
+- [x] `-col` on anything with a gap or an open front, never `-convcol`
       (see `CLAUDE.md` gotchas)
-- [ ] Small Bevel modifier on everything
-- [ ] `Ctrl+A → All Transforms` before export
-- [ ] Named `<kithrin>-stall-t0/t1/t2`, never numbered by version
-- [ ] Swap the CSG variants for the imports; the tier ladder code does not change
+- [x] Small Bevel modifier on everything
+- [x] `Ctrl+A → All Transforms` before export
+- [x] Named `<kithrin>-stall-t0/t1/t2`, never numbered by version
+- [x] Swap the CSG variants for the imports; the tier ladder code does not change
 
 ---
 

@@ -70,5 +70,5 @@ func _pass_night() -> void:
 func _refresh() -> void:
 	var hint := "N to spend the night" if _stall.tier < Stall.TIER_COUNT - 1 else "1 to start over"
 	_label.text = "tier %d  ·  %.2f m  ·  %s" % [
-		_stall.tier, Stall.TIER_HEIGHT[_stall.tier], hint
+		_stall.tier, _stall.height_of(_stall.tier), hint
 	]
