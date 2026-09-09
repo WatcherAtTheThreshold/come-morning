@@ -124,9 +124,11 @@ arms, collision radii and borrowed props all behave without retuning.
 | Stall counter | ~0.70 m — elbow height on a 1.4 m Kithrin, so she can lean on it |
 | Doorway / passage clearance | 1.8 m |
 
-Tier *heights* are deliberately not shared — see the ladder in
-`docs/design/milestone-0.md`. The footprint is the reserved plot; the silhouette is
-what grows.
+The footprint is the only dimension every tier must share. *How* a stall changes
+between tiers — solidity, height, spread, finish — is chosen per Kithrin and is part
+of characterising them; see "What actually changes between tiers" in
+`docs/design/milestone-0.md`. Tilly's stall leads on solidity and keeps its roofline
+near 2 m throughout.
 
 There are no pixels-per-metre in 3D geometry; that idea only applies to texture
 density. Imported assets should be beveled (a small Bevel modifier on everything).
