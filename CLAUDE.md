@@ -249,3 +249,23 @@ threshold, copy that function rather than rediscovering it.
 
 `Layers` (`scripts/layers.gd`) is a contract, not a convenience. Getting a mask wrong
 fails quietly. Add it when there is something to collide with.
+
+### Object names are node names
+
+Godot takes the Blender object name, strips a recognised suffix off the end, and
+uses what is left as the node name. So the suffix glues on with a hyphen or
+underscore and **no space** — `stall-col`, not `stall -col`. A space still matches
+the suffix, which is why it fails quietly: collision generates correctly and the
+node arrives called `"stall "` with a trailing space, so `get_node("stall")` works
+on the tier you tested and fails on the others.
+
+**Identity in the filename, uniformity inside.** The tier lives in the file name
+(`tilly-stall-t0.blend` → root node `tilly-stall-t0`), which is what code selects
+between. Inside, every tier names its parts identically — the mesh is `stall-col`
+in all three files, so `get_node("stall")` resolves on any tier and nothing has to
+branch. Never encode the tier in a child object name: `stall-t0-col` would force
+either a branch per tier or string-building to reach the same node.
+
+This matters most for the markers. `Anchor`, `CounterPoint`, `KithrinStand` and
+`LanternMount` must carry identical names in every tier, because the handover asks
+for `CounterPoint` and must not care which tier is currently standing there.

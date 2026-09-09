@@ -64,28 +64,55 @@ resource is a choice.
 Written in words before it's modelled. Each tier states what it lacks, what it
 gains, and what that **unlocks in the world** — never a stat.
 
-| Tier | Structure | Height | Unlocks |
-|---|---|---|---|
-| 0 | Crate and a tarp | ~1.1 m | Open midday only, closed in rain |
-| 1 | Timber frame, roof, lantern | ~2.0 m | Open in rain; open into the evening |
-| 2 | Proper shopfront, sign, flowerbox | ~2.6 m | Kithrin is present all day; new goods appear |
+| Tier | Structure | Unlocks |
+|---|---|---|
+| 0 | Crate and a lean-to tarp on thin sticks | Open midday only, closed in rain |
+| 1 | Timber frame, roof, lantern — lighter, less on it | Open in rain; open into the evening |
+| 2 | Solid shopfront, sign, flowerbox, chunky posts | Kithrin is present all day; new goods appear |
 
-**The footprint is shared; the height is not.** All three tiers occupy the same
-2 × 2 m plot on a 1 m grid, with the same anchor — that is what makes the swap read
-as growth in place rather than a replacement. But they are deliberately different
-heights, because against a 1.4 m Kithrin the ladder becomes something you can read
-from across the square before a single detail resolves:
+### What actually changes between tiers
 
-> Tier 0 sits **below your eye line**. Tier 1 is a structure you stand **under**.
-> Tier 2 has a **storey on you**.
+**The footprint is shared. Everything else is a choice per stall.**
 
-A 1.4 m Kithrin has an eye line around 1.25 m, so tier 0 has to come in *under* that
-to read as something you stoop toward — a crate at counter height with a tarp slung
-just above it. These are first guesses. They live as `const` at the top of the tier
-script so the grey-box pass can tune them in one number each.
+All three tiers occupy the same 2 × 2 m plot on a 1 m grid with the same anchor, and
+that never varies — it is what makes the swap read as growth *in place* rather than a
+replacement. Beyond that, a stall has several axes it can grow along, and **which
+ones a given Kithrin's stall uses is part of characterising them.** A town where
+every stall improves in the same direction is a town that ends up looking uniform,
+which is the failure this whole design exists to avoid.
 
-Signs and flowerboxes are what you notice once you've walked over. Silhouette is what
-you notice from the other side of town, and it is doing most of the emotional work.
+The vocabulary, so this stays a small set of named options rather than a blank cheque:
+
+| Axis | Tier 0 → tier 2 |
+|---|---|
+| **Solidity** | flimsy sticks you see through → solid mass that occludes |
+| **Height** | low → the roofline genuinely rises |
+| **Spread** | bare plot → awnings, racks and tables filling the same 2 × 2 m |
+| **Finish** | bare weathered wood → paint, signage, colour |
+
+A stall picks one or two and commits. It does not use all four.
+
+**Tilly's stall leads on solidity.** Her tier 0 is a tarp lean-to on thin supports
+that you can see the world through; her tier 2 is a chunky, solid, enclosed
+shopfront. The heights stay close — roughly 1.9 / 2.0 / 2.15 m — with only enough
+graduation that nothing shrinks as it improves.
+
+That still gives a read from across the square, just not a vertical one: **how much
+sky you can see through the stall.** Occlusion, not elevation. A scribble of sticks
+and a solid block are different silhouettes at fifty metres even at the same height.
+
+Keeping the rooflines close is also a quiet practical win — stalls tile next to each
+other without a jagged skyline, and a shared structural kit stays plausible when the
+second Kithrin's stall gets modelled.
+
+**Height is still on the table, for other stalls.** A baker whose oven chimney climbs,
+a Kithrin whose stall gains a second storey — those are exactly the kind of thing that
+should feel different from Tilly's. The original ladder said every stall grows upward;
+that was too narrow. Height is one option among four, not the rule.
+
+Signs and flowerboxes are what you notice once you have walked over. Silhouette is
+what you notice from the other side of town, and it is doing most of the emotional
+work whichever axis produces it.
 
 **Decided since this document was written:** the stall belongs to **Tilly**, a small
 rounded fox-kin, and she trades in mushrooms. What comes back over the counter — and
