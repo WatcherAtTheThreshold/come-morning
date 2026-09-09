@@ -17,8 +17,12 @@ Thumbs.db
 desktop.ini
 .DS_Store
 
-# Blender working files live outside the repo (D:\Blender), not here.
-# This is a safety net for a stray save-in-place.
-*.blend
+# Blender autosaves. Never tracked.
 *.blend[0-9]
 blender-wip/
+
+# Working .blend files DO belong in this repo — Godot imports them directly
+# from res://, so a .blend outside the project cannot be a source asset.
+# Ignored by default so a stray save elsewhere stays out, allowed under assets/.
+*.blend
+!assets/**/*.blend

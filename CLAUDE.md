@@ -136,17 +136,37 @@ nothing — see Art direction.
 
 ## Assets
 
-**Working `.blend` files live outside the repo**, in `D:\Blender`. The repo holds
-exported glTF and its `.import` sidecars only. `.blend` is binary — it does not diff
-and does not merge, so every save-in-place would be a full copy in history.
-`.gitignore` has a safety net for a stray save.
+**Working `.blend` files live under `assets/`, in the repo.** Reversed 2026-09-09:
+Godot imports `.blend` directly from `res://`, so a source file outside the project
+cannot be a source asset at all. The earlier "keep them in `D:\Blender`" rule was
+written before that workflow was in use and was wrong for it.
+
+The cost is real and worth naming: `.blend` is binary, so it does not diff or merge
+and every save is a full copy in history. Keep them reasonably sized, and never
+track `.blend1` autosaves.
 
 ```
 assets/
-  kithrin/    tilly.gltf          one file per character
-  stalls/     tilly-stall.gltf    ALL THREE TIERS in one file
-  props/      mushroom.gltf       loose world objects
+  kithrin/    tilly.blend           one file per character
+  stalls/     tilly-stall-t2.blend  one file per tier
+  props/      mushroom.blend        loose world objects
+  Palette.png                       the shared colour atlas
 ```
+
+### A .blend is a workspace; Godot imports all of it
+
+Godot brings in **every object in the file** — cameras, lights, reference cubes,
+ground planes, and whatever is parked off to the side. It does not know which
+objects you were using as scaffolding.
+
+So anything that is not the asset gets a **`-noimp` suffix** on its object name
+(`Camera-noimp`, `floor-noimp`, `character cube-noimp`). Godot strips those at
+import. This is not optional tidiness — a working camera imported as a `Camera3D`
+will silently become the active camera in whatever scene the model is placed in.
+
+Everything the asset *does* need still applies: `-col` on anything with an open
+front or a gap, applied transforms (`Ctrl+A → All Transforms`), and no `.001`
+duplicate suffixes in names, because those become Godot node names.
 
 ### A stall is one file, not a kit
 
