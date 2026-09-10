@@ -20,13 +20,42 @@ reference rather than canon.
 
 ## State
 
-Pre-milestone-0. Nothing is built yet.
+**Milestone 0 is built and playable.** Walk up to Tilly's stall, press E three
+times to put mushrooms on her counter, and the day closes — come morning the stall
+is better. Three modelled tiers, an overnight transition, and the whole loop end to
+end.
 
-- `docs/design/milestone-0.md` — the one question this milestone exists to answer
-- `docs/design/action-plan.md` — the ordered task list
-- `CLAUDE.md` — constraints, working agreements, and the Blender pipeline inherited
-  from `greenhorn`
+Its one remaining acceptance criterion is a judgement call that has to be made
+cold, away from the session that built it: *does the upgrade still feel good on the
+fifth viewing?* Until that is answered, nothing beyond milestone 0 is in scope.
 
 ## Running it
 
-Open the project folder in Godot 4.7. No build step, no dependencies.
+Open the project folder in Godot 4.7 and press play. No build step, no
+dependencies. `E` gives a mushroom, `WASD` walks, `R` resets the run. `1`/`2`/`3`
+jump between tiers — a debug convenience that gets deleted when the milestone
+closes.
+
+## The documents
+
+Read in this order:
+
+- `CLAUDE.md` — constraints, working agreements, and the Blender pipeline inherited
+  from `greenhorn`. The standing constraints are load-bearing, not preferences
+- `docs/design/milestone-0.md` — the one question this milestone exists to answer,
+  and what the tier ladder means
+- `docs/design/action-plan.md` — the ordered task list, with each checkpoint's
+  result recorded as it was reached
+- `docs/design/alternates/` — designs deliberately **not** being built. Parked
+  because they are good, not because they are bad
+- `docs/reference/` — the `ash-*` prose. Tone reference, not canon
+
+## What comes next
+
+Milestone 1 is the **second Kithrin**, and it exists for one reason: one stall with
+resources is a progress bar, two stalls competing for the same mushrooms is a
+choice. Scarcity is not real until something has to wait.
+
+Everything else — gathering, the day as a budget, what comes back over the counter
+— is written up as open questions in `milestone-0.md` and stays there until that
+question is answered.

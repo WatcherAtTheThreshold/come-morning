@@ -134,14 +134,35 @@ so the loop can be felt end to end in one session.
 
 Milestone 0 is done when all of the following are true:
 
-- [ ] Three stall tiers exist as Blender exports, sharing footprint and anchor
-- [ ] Tiers can be swapped at runtime and the swap is driven by game state, not input
-- [ ] The overnight fade transition plays between tiers
-- [ ] A player capsule can walk up, press E, spend resources, and trigger the upgrade
+- [x] Three stall tiers exist as Blender exports, sharing footprint and anchor
+- [x] Tiers can be swapped at runtime and the swap is driven by game state, not input
+- [x] The overnight fade transition plays between tiers
+- [x] A player capsule can walk up, press E, spend resources, and trigger the upgrade
 - [ ] Jessop has looked at the upgrade several times and it still feels good
 
 The last one is the real criterion. The others are just the machinery needed to
 evaluate it.
+
+### Status 2026-09-09 — machinery complete, verdict outstanding
+
+Four of five are done. The fifth is deliberately still open, because it asks for
+*several* viewings and every one so far has happened in the session that built the
+thing being judged. It wants a cold morning.
+
+Everything the milestone set out to build exists: three modelled tiers, a swap
+driven by handover state, the overnight transition, and a loop that runs end to
+end. Nothing outside this document was built to get there.
+
+One thing the milestone learned that it did not set out to learn — from Jessop,
+on placing the third mushroom:
+
+> *"I was just so pleased by how it felt to put mushrooms on the counter."*
+
+The handover was specified as plumbing: *three units of the resource leave a
+counter*. It turned out to be a pleasure in its own right, separate from the
+upgrade it triggers. That is worth knowing before milestone 1 designs gathering,
+because it means the **giving** is a verb the game can lean on, not just a cost
+the player pays to reach the good part.
 
 ---
 
