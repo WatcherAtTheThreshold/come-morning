@@ -61,8 +61,16 @@ func _ready() -> void:
 	reset()
 
 
+## Note what is NOT in here: being at the last tier. You can always put a
+## mushroom on Tilly's counter. Once she is set up she simply stops building
+## with them, and they sit there.
+##
+## Refusing the gift was the first version and it was wrong twice over — wrong
+## for a game about generosity, and wrong because a button that does nothing
+## teaches the player that the button is broken. If an action is unavailable the
+## world has to say so; there is no HUD here to say it for us.
 func can_give() -> bool:
-	return not _busy and stock > 0 and not at_last_tier() and in_reach()
+	return not _busy and stock > 0 and on_counter < COST and in_reach()
 
 
 func at_last_tier() -> bool:
@@ -99,7 +107,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	on_counter += 1
 	_place(on_counter - 1)
 
-	if on_counter >= COST:
+	# A full counter only closes the day if there is a tier left to reach. At the
+	# last tier the mushrooms just stay where you put them.
+	if on_counter >= COST and not at_last_tier():
 		_pass_the_night()
 
 

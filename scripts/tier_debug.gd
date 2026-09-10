@@ -49,12 +49,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _refresh() -> void:
 	var hint := ""
-	if _handover.at_last_tier():
-		hint = "Tilly is set up for good  ·  R to start over"
-	elif _handover.stock <= 0:
-		hint = "out of mushrooms  ·  R to start over"
-	elif _handover.can_give():
+	if _handover.can_give():
 		hint = "E to give"
+	elif _handover.stock <= 0:
+		hint = "basket empty  ·  R to start over"
+	elif _handover.on_counter >= Handover.COST:
+		hint = "Tilly has all she needs  ·  R to start over"
 	else:
 		hint = "walk up to the counter"
 

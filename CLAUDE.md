@@ -37,6 +37,18 @@ is different.
   resource starts describing *when* a stall opens or *how* a handover resolves, the
   data has stopped being a roster and started being a badly-typed programming
   language.
+- **A refused action must say why, in the world.** This project has no HUD to
+  explain itself, so an input that is correctly ignored is indistinguishable from
+  an input that is broken. Prefer letting the action happen and having it change
+  nothing — a mushroom that sits on the counter uneaten says "she is set up" far
+  better than a key that does nothing. Where refusing is genuinely necessary, the
+  refusal has to be visible.
+
+  This is the project's recurring failure shape, not a one-off: `-col` on a
+  collection imported perfectly and produced no collider; hidden Blender objects
+  imported anyway; giving at the last tier did nothing at all. Every one behaved
+  correctly and said nothing. Assume the next bug is this one again, and check by
+  running rather than by reading.
 - Placeholder art is fine everywhere except the thing currently being evaluated.
 - Balance and feel values live as `const` at the top of the script that uses them,
   so playtest feedback is a one-number change.
