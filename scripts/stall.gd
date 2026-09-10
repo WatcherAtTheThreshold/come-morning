@@ -60,6 +60,14 @@ func height_of(t: int) -> float:
 	return _heights[t]
 
 
+## The tier currently standing. Whoever needs a position on the stall asks this
+## for it, so nothing outside has to know how many tiers were instantiated.
+func current_tier_node() -> Node3D:
+	if _tiers.is_empty():
+		return null
+	return _tiers[tier]
+
+
 func _measure_height(root: Node3D) -> float:
 	var to_local := global_transform.affine_inverse()
 	var top := 0.0

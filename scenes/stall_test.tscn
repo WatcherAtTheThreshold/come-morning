@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/stall_test.gd" id="1_root"]
 [ext_resource type="Script" path="res://scripts/stall.gd" id="2_stall"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_player"]
 [ext_resource type="Script" path="res://scripts/tier_debug.gd" id="4_debug"]
 [ext_resource type="Script" path="res://scripts/overnight.gd" id="5_overnight"]
+[ext_resource type="Script" path="res://scripts/handover.gd" id="6_handover"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_1"]
 
@@ -91,4 +92,10 @@ color = Color(0.078, 0.102, 0.18, 0)
 script = ExtResource("4_debug")
 stall_path = NodePath("../Stall")
 label_path = NodePath("../Debug/TierLabel")
+handover_path = NodePath("../Handover")
+
+[node name="Handover" type="Node" parent="."]
+script = ExtResource("6_handover")
+stall_path = NodePath("../Stall")
+player_path = NodePath("../Player")
 overnight_path = NodePath("../Overnight")

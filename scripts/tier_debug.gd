@@ -1,31 +1,29 @@
 extends Node
 
-## TEMPORARY — DELETE AT ACTION-PLAN STEP 4.
+## TEMPORARY — DELETE WITH THE Debug CanvasLayer WHEN MILESTONE 0 CLOSES.
 ##
-## Delete this script, its node, and the Debug CanvasLayer when the handover
-## lands. From then on the tier is driven by game state, and a leftover key that
-## sets it directly is a debug path that will quietly outlive its usefulness.
+## The real loop now lives in `handover.gd`: walk up, press E three times, the
+## night passes, the stall is better. Nothing here is part of that.
 ##
-## What replaces it is narrow: step 4 swaps the N key for walking up and pressing
-## E. The overnight sequence in _pass_night() is the real thing and moves across
-## unchanged — only the trigger is scaffolding.
+## `action-plan.md` step 4 says to delete the tier keys at this point, because
+## tier must be driven by game state. Kept anyway for now, and the deviation is
+## deliberate: the stall models are still being tuned, and jumping between tiers
+## on demand is the tool for that. It is honest because the whole script goes at
+## the end of the milestone — there is no path here that survives into the game.
 ##
-## These keys are deliberately NOT registered in project.godot's input map. An
-## input action survives the milestone; a doomed script cannot.
-##
-##   1 / 2 / 3   jump straight to a tier, for comparing them side by side
-##   N           spend the night and come up one tier — the actual moment
+##   1 / 2 / 3   jump to a tier, for comparing models while they are in flux
+##   R           reset the run — tier 0, full basket, counter cleared
 
 @export var stall_path: NodePath
 @export var label_path: NodePath
-@export var overnight_path: NodePath
+@export var handover_path: NodePath
 
 @onready var _stall: Stall = get_node(stall_path)
 @onready var _label: Label = get_node(label_path)
-@onready var _overnight: Overnight = get_node(overnight_path)
+@onready var _handover: Handover = get_node(handover_path)
 
 
-func _ready() -> void:
+func _process(_delta: float) -> void:
 	_refresh()
 
 
@@ -35,8 +33,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	var key_event := event as InputEventKey
 	if not key_event.pressed or key_event.echo:
 		return
-	if _overnight.is_running():
-		return
 
 	match key_event.physical_keycode:
 		KEY_1:
@@ -45,30 +41,24 @@ func _unhandled_input(event: InputEvent) -> void:
 			_stall.tier = 1
 		KEY_3:
 			_stall.tier = 2
-		KEY_N:
-			_pass_night()
-			return
+		KEY_R:
+			_handover.reset()
 		_:
 			return
 
-	_refresh()
-
-
-## The sequence, spelled out in the order it happens. The tier changes while the
-## screen is dark, so the swap itself is never on screen — that is the whole
-## trick, and it is three lines.
-func _pass_night() -> void:
-	if _stall.tier >= Stall.TIER_COUNT - 1:
-		return
-
-	await _overnight.fade_to_night()
-	_stall.tier += 1
-	_refresh()
-	await _overnight.fade_to_morning()
-
 
 func _refresh() -> void:
-	var hint := "N to spend the night" if _stall.tier < Stall.TIER_COUNT - 1 else "1 to start over"
-	_label.text = "tier %d  ·  %.2f m  ·  %s" % [
-		_stall.tier, _stall.height_of(_stall.tier), hint
+	var hint := ""
+	if _handover.at_last_tier():
+		hint = "Tilly is set up for good  ·  R to start over"
+	elif _handover.stock <= 0:
+		hint = "out of mushrooms  ·  R to start over"
+	elif _handover.can_give():
+		hint = "E to give"
+	else:
+		hint = "walk up to the counter"
+
+	_label.text = "tier %d  ·  %.2f m  ·  basket %d  ·  counter %d/%d  ·  %s" % [
+		_stall.tier, _stall.height_of(_stall.tier),
+		_handover.stock, _handover.on_counter, Handover.COST, hint,
 	]
